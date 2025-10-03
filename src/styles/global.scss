@@ -1,0 +1,25 @@
+/* Reset / normalize */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #14131a 0%, #1a1625 40%, #241f36 100%);
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
