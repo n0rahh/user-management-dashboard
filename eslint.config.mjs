@@ -50,7 +50,13 @@ export default [
     },
     settings: {
       'import/resolver': {
-        typescript: {},
+        typescript: {
+          project: './tsconfig.app.json',
+        },
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.ts', '.js', '.vue', '.json'],
+        },
       },
     },
   },
