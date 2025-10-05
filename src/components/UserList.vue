@@ -42,7 +42,11 @@
     title="Confirm Deletion"
     @update:visible="onCancelHandler"
   >
-    <p>Are you sure you want to delete this user?</p>
+    <p>
+      Are you sure you want to delete user
+      <strong>{{ getUserName }}</strong>
+      ?
+    </p>
 
     <template #footer>
       <Button
@@ -109,6 +113,11 @@ const filteredUsers = computed(() => {
         !search || u.name.toLowerCase().includes(search) || u.email.toLowerCase().includes(search)
     )
     .sort((a, b) => a.name.localeCompare(b.name))
+})
+
+const getUserName = computed(() => {
+  const user = items.value.find(u => u.id === userToDelete.value)
+  return user ? user.name : ''
 })
 
 const mapStatus = (value: string): StatusType => {
