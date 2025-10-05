@@ -32,6 +32,7 @@ Features include:
 
 ## Project Structure
 
+```
 src/
 ├─ components/
 │ ├─ UI/ # Reusable UI components (Button, Table, Dialog, Chip, Input, Select)
@@ -47,6 +48,7 @@ src/
 │ └─ status.ts # Status types
 ├─ App.vue
 └─ main.ts
+```
 
 ---
 
