@@ -23,3 +23,17 @@ body {
   margin: 0 auto;
   padding: 1rem;
 }
+
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 9999;
+}
+
+.toast-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
