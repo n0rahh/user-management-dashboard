@@ -14,49 +14,51 @@
       <span class="loading-text"> Loading </span> <Loader />
     </div>
 
-    <table
+    <div
       v-else
-      class="table"
+      class="table-scroll"
     >
-      <thead>
-        <tr>
-          <th
-            v-for="header in headers"
-            :key="header.key"
-          >
-            {{ header.label }}
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr
-          v-for="(item, index) in paginatedItems"
-          :key="index"
-        >
-          <td
-            v-for="header in headers"
-            :key="header.key"
-          >
-            <slot
-              :name="`cell-${header.key}`"
-              :item="item"
+      <table class="table">
+        <thead>
+          <tr>
+            <th
+              v-for="header in headers"
+              :key="header.key"
             >
-              {{ item[header.key] }}
-            </slot>
-          </td>
-        </tr>
+              {{ header.label }}
+            </th>
+          </tr>
+        </thead>
 
-        <tr v-if="!paginatedItems.length">
-          <td
-            :colspan="headers.length"
-            class="empty"
+        <tbody>
+          <tr
+            v-for="(item, index) in paginatedItems"
+            :key="index"
           >
-            No data found.
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <td
+              v-for="header in headers"
+              :key="header.key"
+            >
+              <slot
+                :name="`cell-${header.key}`"
+                :item="item"
+              >
+                {{ item[header.key] }}
+              </slot>
+            </td>
+          </tr>
+
+          <tr v-if="!paginatedItems.length">
+            <td
+              :colspan="headers.length"
+              class="empty"
+            >
+              No data found.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div
       v-if="items.length"
@@ -130,6 +132,12 @@ const prevPage = () => {
   box-shadow: $shadow;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
 .table-header {
   display: flex;
   align-items: center;
@@ -164,6 +172,7 @@ const prevPage = () => {
 
 .table {
   width: 100%;
+  min-width: 530px;
   border-collapse: collapse;
   table-layout: auto;
 }
@@ -235,7 +244,15 @@ const prevPage = () => {
 
   .pagination {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 530px) {
+  .table-header,
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 </style>
