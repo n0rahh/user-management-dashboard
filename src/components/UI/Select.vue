@@ -4,6 +4,7 @@
       v-model="localValue"
       @change="emitUpdate"
       class="select-field"
+      :style="{ minWidth: minWidth }"
     >
       <option
         v-for="option in options"
@@ -22,6 +23,7 @@ import { ref, watch } from 'vue'
 const props = defineProps<{
   modelValue: string
   options: Array<{ label: string; value: string }>
+  minWidth?: string
 }>()
 
 const emit = defineEmits<{

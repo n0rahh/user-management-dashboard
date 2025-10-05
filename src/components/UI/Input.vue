@@ -5,6 +5,7 @@
       :type="type"
       :placeholder="placeholder"
       class="input-field"
+      :style="{ minWidth: minWidth }"
       @input="emitUpdate"
       @focus="focused = true"
       @blur="focused = false"
@@ -19,6 +20,7 @@ const props = defineProps<{
   modelValue: string
   type?: string
   placeholder?: string
+  minWidth?: string
 }>()
 
 const emit = defineEmits<{
