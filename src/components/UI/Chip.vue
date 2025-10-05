@@ -50,6 +50,12 @@ defineProps<{
   border-color: rgba($error, 0.25);
 }
 
+.unknown {
+  background: rgba($info, 0.1);
+  color: color.adjust($info, $lightness: 20%);
+  border-color: rgba($info, 0.25);
+}
+
 .chip:hover {
   filter: brightness(1.15);
 }
