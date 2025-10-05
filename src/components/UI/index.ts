@@ -4,5 +4,6 @@ import Table from './Table.vue'
 import Toast from './Toast.vue'
 import Chip from './Chip.vue'
 import Button from './Button.vue'
+import Dialog from './Dialog.vue'
 
-export { Input, Select, Table, Toast, Chip, Button }
+export { Input, Select, Table, Toast, Chip, Button, Dialog }
