@@ -37,8 +37,8 @@ export function useUsers() {
       await delay(1000)
       users.value = [...mockUsers]
       return true
-    } catch (e: any) {
-      error.value = e?.message ?? 'Failed to fetch users'
+    } catch (e: unknown) {
+      error.value = (e as Error)?.message ?? 'Failed to fetch users'
       return false
     } finally {
       loading.value = false
@@ -50,8 +50,8 @@ export function useUsers() {
       await delay(500)
       users.value = users.value.filter(u => u.id !== id)
       return true
-    } catch (e: any) {
-      error.value = e?.message ?? 'Failed to delete user'
+    } catch (e: unknown) {
+      error.value = (e as Error)?.message ?? 'Failed to delete user'
       return false
     }
   }

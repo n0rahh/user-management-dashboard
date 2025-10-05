@@ -1,4 +1,5 @@
 import { createApp, h, reactive } from 'vue'
+
 import { Toast } from '@/components/UI'
 
 export type ToastType = 'success' | 'error' | 'info'
