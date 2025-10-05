@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<template>
+  <div class="container">
+    <UserList />
+  </div>
+</template>
 
-<template></template>
-
-<style scoped></style>
+<script setup lang="ts">
+import UserList from './components/UserList.vue'
+</script>
