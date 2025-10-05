@@ -11,7 +11,7 @@
       v-if="loading"
       class="loading"
     >
-      Loading...
+      <span class="loading-text"> Loading </span> <Loader />
     </div>
 
     <table
@@ -92,6 +92,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+import { Loader } from '@/components/UI'
+
 const props = defineProps<{
   title?: string
   headers: { label: string; key: string }[]
@@ -148,9 +150,16 @@ const prevPage = () => {
 }
 
 .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
   text-align: center;
   color: $muted;
+
+  &-text {
+    margin-right: 1rem;
+  }
 }
 
 .table {
