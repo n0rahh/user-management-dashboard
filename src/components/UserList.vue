@@ -4,7 +4,7 @@
     :headers="headers"
     :items="filteredUsers"
     :loading="loading"
-    :rows-per-page="10"
+    :rows-per-page="rowsPerPage"
   >
     <template #controls>
       <Input
@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 
 import { Table, Input, Select, Chip, Button, Dialog } from '@/components/UI'
 import { useToast } from '@/composables/useToast'
@@ -100,6 +100,17 @@ watch(
   },
   { immediate: true }
 )
+
+const rowsPerPage = ref(10)
+
+const updateRowsPerPage = () => {
+  const width = window.innerWidth
+  if (width <= 530) {
+    rowsPerPage.value = 5
+  } else {
+    rowsPerPage.value = 10
+  }
+}
 
 const localSearch = ref('')
 const localStatus = ref<'all' | StatusType>('all')
@@ -170,5 +181,13 @@ const loadUsers = async () => {
   }
 }
 
-onMounted(loadUsers)
+onMounted(() => {
+  loadUsers()
+  updateRowsPerPage()
+  window.addEventListener('resize', updateRowsPerPage)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateRowsPerPage)
+})
 </script>
